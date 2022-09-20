@@ -32,12 +32,12 @@
         class="settings-panel"
       >
         组件属性
+        <pre>{{ currentElement && currentElement.props }}</pre>
         <props-table
           v-if="currentElement && currentElement.props"
           :props="currentElement.props"
           @change="handleChange"
         ></props-table>
-        <pre>{{ currentElement && currentElement.props }}</pre>
       </a-layout-sider>
     </a-layout>
   </div>
@@ -78,7 +78,6 @@ export default defineComponent({
     };
 
     const handleChange = (e: any) => {
-      console.log(e, "==e");
       store.commit("updateComponent", e);
     };
 
