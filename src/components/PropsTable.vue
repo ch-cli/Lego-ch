@@ -23,9 +23,6 @@
         </component>
       </div>
     </div>
-    <pre>
-        {{ finalProps }}
-    </pre>
   </div>
 </template>
 
@@ -95,7 +92,7 @@ export default defineComponent({
           }
           return result;
         },
-        // Required 内置Required,可选变成必选
+        // Required 内置Required,可选变成必选 {} as Required<{[key:string] : props}> 
         {} as { [key: string]: FormProps }
       );
     });

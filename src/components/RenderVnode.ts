@@ -1,5 +1,7 @@
 import { defineComponent } from 'vue'
 
+
+// vnode类型
 const RenderVnode = defineComponent({
   props: {
     vNode: {

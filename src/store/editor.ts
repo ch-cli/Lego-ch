@@ -45,6 +45,9 @@ const editor: Module<EditorProps, GlobalDataProps> = {
       if (updatedComponent) {
         updatedComponent.props[key as keyof TextComponentProps] = value
       }
+    },
+    deleteComponent(state, currentId: string) {
+      state.components = state.components.filter(ele => ele.id !== currentId)
     }
 
   },

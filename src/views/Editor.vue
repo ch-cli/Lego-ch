@@ -19,6 +19,7 @@
               :key="item.id"
               :id="item.id"
               @setActive="setActive"
+              @deleteComponent="deleteComponent"
               :active="item.id === (currentElement && currentElement.id)"
             >
               <component :is="item.name" v-bind="item.props" />
@@ -32,7 +33,6 @@
         class="settings-panel"
       >
         组件属性
-        <pre>{{ currentElement && currentElement.props }}</pre>
         <props-table
           v-if="currentElement && currentElement.props"
           :props="currentElement.props"
@@ -77,6 +77,10 @@ export default defineComponent({
       store.commit("setActive", id);
     };
 
+    const deleteComponent = (id: string) => {
+      store.commit("deleteComponent", id);
+    };
+
     const handleChange = (e: any) => {
       store.commit("updateComponent", e);
     };
@@ -86,6 +90,7 @@ export default defineComponent({
       addItem,
       defaultTextTemplates,
       setActive,
+      deleteComponent,
       currentElement,
       handleChange,
     };

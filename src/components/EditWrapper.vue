@@ -1,6 +1,7 @@
 <template>
   <div class="edit-wrapper" @click="onItemClick(id)" :class="{ active }">
     <slot></slot>
+    <span @click="deleteComponent(id)">X</span>
   </div>
 </template>
 
@@ -17,13 +18,18 @@ export default defineComponent({
       default: false,
     },
   },
-  emits: ["set-active"],
+  emits: ["set-active", "deleteComponent"],
   setup(props, context) {
     const onItemClick = (id: string) => {
       context.emit("set-active", id);
     };
+    const deleteComponent = (id: string) => {
+      context.emit("deleteComponent", id);
+    };
+
     return {
       onItemClick,
+      deleteComponent,
     };
   },
 });
@@ -31,10 +37,13 @@ export default defineComponent({
 
 <style>
 .edit-wrapper {
-  padding: 0px;
+  padding: 0px 10px;
   cursor: pointer;
   border: 1px solid transparent;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .edit-wrapper:hover {
   border: 1px dashed #ccc;
